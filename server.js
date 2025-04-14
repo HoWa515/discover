@@ -15,8 +15,14 @@ mongoose
     console.log(con.connections);
     console.log('Atlas DB connected');
   });
-//  start server
 
+const tourSchema = mongoose.Schema({
+  name: String,
+  price: Number,
+  rating: Number,
+});
+
+//  start server
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
