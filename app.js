@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+
 // handle undefined routes
 app.all('*', (req, res, next) => {
   const err = new AppError(`Can't find ${req.originalUrl}`, 404);
