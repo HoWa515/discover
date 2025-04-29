@@ -41,6 +41,12 @@ const handleValidationErrorDB = (err) => {
   const message = `Invalid input data`;
   return new AppError(message, 400);
 };
+const handleJWTError = () =>
+  new AppError('Invalid token,please login again', 401);
+
+const handleJWTExpiredError = () => {
+  return new AppError('Your token expired,please login again', 401);
+};
 
 // gloabal error handling middleware
 module.exports = (err, req, res, next) => {
@@ -58,6 +64,9 @@ module.exports = (err, req, res, next) => {
     // validation error
     if (error.name === 'ValidationError')
       error = handleValidationErrorDB(error);
+    //====== error from not valid jwt token
+    if (error.name === 'JsonWebTokenError') error = handleJWTError();
+    if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
 
     sendErrorProd(error, res);
   }
