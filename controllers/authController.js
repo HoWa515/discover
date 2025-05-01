@@ -19,6 +19,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,
+    role: req.body.role,
   });
   // CREATE JWT TOKEN
   const token = signToken(newUser._id);
@@ -88,3 +89,13 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      //req.user comes from protect middleware
+      return next(new AppError("You don't have permission", 403));
+    }
+    next();
+  };
+};
