@@ -56,6 +56,7 @@ userSchema.pre('save', function (next) {
   this.passwordChangedAt = Date.now() - 1000; // make sure JWT token crated after password is changed
   next();
 });
+
 // instance method
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
