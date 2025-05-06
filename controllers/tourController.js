@@ -7,12 +7,14 @@ exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
   req.query.sort = '-ratingsAverage,price';
   req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
+
   next();
 };
 
 exports.getAllTours = catchAsync(async (req, res, next) => {
   // execute query
   // --Tour.find() is a general query, to make constructor work
+
   const features = new APIFeatures(Tour.find(), req.query)
     .filter()
     .sort()
