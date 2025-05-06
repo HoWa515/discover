@@ -32,7 +32,7 @@ const server = app.listen(port, () => {
 // Handle DB connection fials and other rejected promises globally
 process.on('unhandledRejection', (err) => {
   // listen unhandledRejection evnet
-  console.log('Unhandled rejection! App shutting down...💤');
+  console.log('Unhandled rejection! App shutting down....💤');
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1); // 1 stands for uncaught exception; 0 stands success
