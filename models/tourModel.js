@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const User = require('./userModel');
 // schema-- model
 const tourSchema = mongoose.Schema(
   {
@@ -57,6 +58,27 @@ const tourSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    startLocation: {
+      // GeoJSON
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: { type: String, default: 'Point', enum: ['Point'] },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    guides: Array,
   },
   {
     toJSON: { virtuals: true },
@@ -70,12 +92,19 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 // -------mongoose middleware
-// mongoose document middleware, run before .save(),.create(),  BUT NOT .insertMany()
+// save(),.create(),  NOT .insertMany()
 tourSchema.pre('save', function (next) {
   // console.log(this);// this doc
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+
+tourSchema.pre('save', async function (next) {
+  const guidesPromises = this.guides.map(async (id) => await User.findById(id));
+  this.guides = await Promise.all(guidesPromises);
+  next();
+});
+
 // query middleware:find(),also starts with find
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
