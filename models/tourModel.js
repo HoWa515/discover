@@ -95,6 +95,12 @@ const tourSchema = mongoose.Schema(
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
+// virtual populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
+});
 
 // -------mongoose middleware
 // save(),.create(),  NOT .insertMany()
@@ -120,6 +126,12 @@ tourSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} ms 🕐`);
   next();
 });
+
+tourSchema.pre(/^find/, function (next) {
+  this.populate('guides');
+  next();
+});
+
 //Aggregation middleware
 tourSchema.pre('aggregate', function (next) {
   this.pipeline().unshift({ $match: { secretTour: { $ne: true } } });
