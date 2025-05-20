@@ -1,8 +1,8 @@
 [
   {
     "_id": "5c8a1d5b0190b214360dc057",
-    "name": "Jonas Schmedtmann",
-    "email": "admin@natours.io",
+    "name": "Hong Wang",
+    "email": "admin@discover.io",
     "role": "admin",
     "active": true,
     "photo": "user-1.jpg",
@@ -109,7 +109,7 @@
   },
   {
     "_id": "5c8a23412f8fb814b56fa18c",
-    "name": "Ben Hadley",
+    "name": "Ben Kwiwa",
     "email": "ben@example.com",
     "role": "guide",
     "active": true,
