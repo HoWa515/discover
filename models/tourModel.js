@@ -29,6 +29,7 @@ const tourSchema = mongoose.Schema(
       default: 4.5,
       min: [1, 'Rating must above 1'],
       max: [5, 'Rating must below 5'],
+      set: (val) => Math.round(val * 10) / 10,
     },
     ratingsQuantity: { type: Number, default: 0 },
     price: { type: Number, required: [true, 'A tour must have a price'] },
