@@ -6,33 +6,12 @@ html(lang="en")
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
         link(rel='stylesheet', href='css/style.css')
         link(rel='shortcut icon' type='image/png' href='img/favicon.png' )
-        title Discover | Nature and You
+        title Discover | #{title}
     
     body
-        //- header
-        header.header 
-            header.nav.nav--tours 
-                a.nav__el(href='#') All tours 
-            .header__logo 
-                img(src='img/logo.png',alt='Discover logo') 
-            nav.nav.nav--user 
-                //- a.nav__el(href='#') My bookings 
-                //- a.nav__el(href='#') 
-                //-     img.nav__user-img(src='img.user.jpg', alt="user photo")
-                //-     span Hong
-                button.nav__el Log in
-                button.nav__el.nav__el--cta Sign up
+        include _header
     
-        section.overview 
-            h1= tour
+        block content 
+            h1 This is a placeholder heading
 
-        footer.footer   
-            .footer__logo 
-                img(src='img/logo.png', alt='Discover logo')
-            ul.footer__nav 
-                li: a(href='#') About us
-                li: a(href='#') Download apps
-                li: a(href='#') Become a guide
-                li: a(href='#') Careers
-                li: a(href='#') Contact
-            p.footer__copyright &copy; by Hong Wang  
+        include _footer  
