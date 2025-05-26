@@ -17,7 +17,7 @@ const hpp = require('hpp');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // http secure header
 app.use(helmet());
@@ -62,7 +62,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  res.status(200).render('base');
+  res.status(200).render('base', { tour: 'The Forest Hiker', user: 'Hong' });
 });
 
 app.use('/api/v1/tours', tourRouter);

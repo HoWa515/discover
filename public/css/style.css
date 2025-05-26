@@ -32,7 +32,7 @@ body {
   font-weight: 300;
   font-family: 'Lato', sans-serif;
   color: #777;
-  padding: 3rem;
+  /* padding: 3rem; */
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -299,7 +299,7 @@ body {
 }
 
 .header {
-  background-color: #444;
+  background-color: #ceafe2;
   padding: 0 5rem;
   height: 8rem;
   position: relative;
@@ -323,7 +323,7 @@ body {
   }
 }
 .header__logo img {
-  height: 3.5rem;
+  height: 8rem;
 }
 @media only screen and (max-width: 62.5em) {
   .header__logo {
@@ -896,7 +896,7 @@ body {
 .nav__el,
 .nav__el:link,
 .nav__el:visited {
-  color: #f7f7f7;
+  color: #444;
   text-transform: uppercase;
   font-size: 1.6rem;
   text-decoration: none;
@@ -908,7 +908,7 @@ body {
   align-items: center;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  font-weight: 400;
+  font-weight: 600;
   background: none;
   border: none;
   cursor: pointer;
@@ -916,9 +916,9 @@ body {
 }
 .nav__el:hover,
 .nav__el:active {
-  -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
-  text-shadow: 0 0.7rem 1rem black;
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  text-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.4);
 }
 .nav__el:not(:last-child) {
   margin-right: 3rem;
