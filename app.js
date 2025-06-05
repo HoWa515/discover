@@ -13,6 +13,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 //  global middleware
 
 app.set('view engine', 'pug');
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // http secure header
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -36,12 +37,17 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 // body parser
 app.use(express.json());
+app.use(cookieParser());
 
 // data sanitization--NoSQL query injection
 app.use(mongoSanitize());
 // data sanitization --XSS
 app.use(xss());
 
+app.use((req, res, next) => {
+  console.log(req.cookies);
+  next();
+});
 // prevent parameter pollution
 app.use(
   hpp({

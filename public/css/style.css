@@ -540,7 +540,8 @@ body {
 
 .section-map {
   position: relative;
-  height: 65rem;
+  /* height: 65rem; */
+  height: 380px;
   margin-top: calc(0px - var(--section-rotate));
 }
 
