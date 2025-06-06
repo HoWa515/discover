@@ -20,7 +20,7 @@ mongoose
   })
   .then((con) => {
     console.log(con.connections);
-    console.log('Atlas has connected');
+    console.log('Atlas connected');
   });
 
 //  start server
