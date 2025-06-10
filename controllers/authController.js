@@ -102,6 +102,32 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+// for conditional rendering
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    //1) verify the token
+    const decodedPayload = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET //
+    ); // decodedayload:{id, iat,exp}
+
+    // 2) Check if user still exists
+    const currentUser = await User.findById(decodedPayload.id);
+    if (!currentUser) {
+      return next();
+    }
+
+    // 3)check if user changed password after JWT token was issued
+    if (currentUser.changedPasswordAfter(decodedPayload.iat)) {
+      return next();
+    }
+    // 4) there is a logined user
+    res.locals.user = currentUser;
+    return next();
+  }
+  next();
+});
+
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
