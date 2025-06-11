@@ -1,1 +1,3 @@
-console.log('hello bundler');
+/*eslint_disable*/
+import '@babel/polyfill';
+import { login } from './login';
