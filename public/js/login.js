@@ -1,3 +1,5 @@
+// const { default: axios } = require('axios');
+
 const hideAlert = () => {
   const el = document.querySelector('.alert');
   if (el) el.parentElement.removeChild(el);
@@ -40,3 +42,21 @@ if (loginForm) {
     login(email, password);
   });
 }
+
+// logout
+const logOutButton = document.querySelector('.nav__el--logout');
+
+const logout = async () => {
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:3000/api/v1/users/logout',
+    });
+    // reload page, set true=== fresh page from server
+    if (res.data.status === 'success') location.reload(true);
+  } catch (err) {
+    showAlert('error', 'Error logging out! Try again.');
+  }
+};
+
+if (logOutButton) logOutButton.addEventListener('click', logout);
