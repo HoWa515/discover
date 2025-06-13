@@ -1,0 +1,1 @@
+const updateDate = (name, email) => {};
