@@ -3,12 +3,12 @@
 }
 
 ::-moz-selection {
-  background-color: #55c57a;
+  background-color: #55c5b8;
   color: #fff;
 }
 
 ::selection {
-  background-color: #55c57a;
+  background-color: #55c5ba;
   color: #fff;
 }
 
@@ -44,7 +44,10 @@ body {
 }
 
 .main {
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7; */
+  background-image: linear-gradient(#bdf6f980, rgba(85, 180, 188, 0.5)),
+    url('main-bg.jpg');
+
   padding: 8rem 6rem;
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -104,10 +107,10 @@ body {
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
 }
 .alert--success {
-  background-color: #20bf6b;
+  background-color: #20bfa2;
 }
 .alert--error {
-  background-color: #eb4d4b;
+  background-color: #eb4b70;
 }
 
 .heading-secondary {
@@ -118,10 +121,10 @@ body {
     linear,
     left top,
     right top,
-    from(#7dd56f),
-    to(#28b487)
+    from(#6fd5bd),
+    to(#28b4a4)
   );
-  background-image: linear-gradient(to right, #7dd56f, #28b487);
+  background-image: linear-gradient(to right, #6fd2d5, #28b2b4);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
@@ -299,7 +302,7 @@ body {
 }
 
 .header {
-  background-color: #ceafe2;
+  background-color: #a9faf7ca;
   padding: 0 5rem;
   height: 8rem;
   position: relative;
@@ -372,10 +375,10 @@ body {
     linear,
     left top,
     right bottom,
-    from(#7dd56f),
-    to(#28b487)
+    from(#6fd5ba),
+    to(#2888b4)
   );
-  background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background-image: linear-gradient(to right bottom, #98f38a, #52fec7);
   opacity: 0.85;
 }
 
@@ -483,7 +486,7 @@ body {
 .overview-box__icon {
   height: 2.25rem;
   width: 2.25rem;
-  fill: #55c57a;
+  fill: #86fdae;
 }
 .overview-box__label {
   font-weight: 700;
@@ -582,10 +585,10 @@ body {
     linear,
     left top,
     right bottom,
-    from(#7dd56f),
-    to(#28b487)
+    from(#a1f894),
+    to(#6df8cc)
   );
-  background: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background: linear-gradient(to right bottom, #a5f798, #66f6c9);
   clip-path: polygon(
     0 var(--section-rotate),
     100% 0,
@@ -670,7 +673,7 @@ body {
   margin-right: 1px;
 }
 .reviews__star--active {
-  fill: #55c57a;
+  fill: #6df89b;
 }
 .reviews__star--inactive {
   fill: #bbb;
@@ -723,7 +726,7 @@ body {
     from(#7dd56f),
     to(#28b487)
   );
-  background: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background: linear-gradient(to right bottom, #a6f69a, #54f0bf);
   z-index: 10;
   -webkit-transform: translate(-35%, -50%);
   transform: translate(-35%, -50%);
@@ -777,10 +780,10 @@ body {
     linear,
     left top,
     right bottom,
-    from(#7dd56f),
-    to(#28b487)
+    from(#a1f2f4),
+    to(#5ceae8df)
   );
-  background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+  background-image: linear-gradient(to right bottom, #97f5ed, #64f7f0da);
   padding: 4rem 0;
 }
 .user-view__content {
@@ -796,7 +799,7 @@ body {
 }
 
 .footer {
-  background-color: #f7f7f7;
+  background-color: #abfcf9e4;
   padding: 2rem 4rem;
   font-size: 1.4rem;
   display: grid;
@@ -843,11 +846,11 @@ body {
 }
 .footer__nav a:hover,
 .footer__nav a:active {
-  color: #55c57a;
+  color: #4aab6b;
 }
 .footer__copyright {
   justify-self: end;
-  color: #999;
+  color: #7d7c7c;
 }
 @media only screen and (max-width: 50em) {
   .footer__copyright {
@@ -1017,13 +1020,13 @@ body {
 }
 .side-nav li {
   margin: 1rem 0;
-  border-left: 0 solid #fff;
+  border-left: 0 solid #446a4b;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 .side-nav--active,
 .side-nav li:hover {
-  border-left: 4px solid #fff !important;
+  border-left: 4px solid #446a4b !important;
 }
 .side-nav--active a {
   -webkit-transform: translateX(-3px);
@@ -1038,7 +1041,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #fff;
+  color: #446a4b;
   font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 400;
@@ -1054,7 +1057,7 @@ body {
 .side-nav svg {
   height: 1.9rem;
   width: 1.9rem;
-  fill: #f7f7f7;
+  fill: #446a4b;
   margin-right: 2rem;
 }
 
@@ -1066,7 +1069,7 @@ body {
   padding-bottom: 3px;
   font-size: 1.2rem;
   text-transform: uppercase;
-  color: #f2f2f2;
+  color: #446a4b;
   border-bottom: 1px solid currentColor;
 }
 
