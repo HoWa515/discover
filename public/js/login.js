@@ -16,10 +16,9 @@ const showAlert = (type, msg) => {
 
 const login = async (email, password) => {
   try {
-    console.log('Ready to login...');
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: { email, password },
     });
     if (res.data.status === 'success') {
@@ -52,7 +51,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/users/logout',
+      url: '/api/v1/users/logout',
     });
     // reload page, set true=== fresh page from server
     if (res.data.status === 'success') location.reload(true);
@@ -91,8 +90,8 @@ const updateSettings = async (data, type) => {
   try {
     const url =
       type === 'password'
-        ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword'
-        : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+        ? '/api/v1/users/updateMyPassword'
+        : '/api/v1/users/updateMe';
 
     const res = await axios({
       method: 'PATCH',
@@ -116,14 +115,14 @@ if (userDataForm) {
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+
     updateSettings(form, 'data');
   });
 }
 
 // ========= Update password
 const userPasswordForm = document.querySelector('.form-user-password');
-console.log(userPasswordForm); // NULL ???
+// console.log(userPasswordForm); // NULL ???
 
 if (userPasswordForm) {
   userPasswordForm.addEventListener('submit', async (e) => {
